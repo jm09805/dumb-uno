@@ -1,6 +1,6 @@
 //This is an Uno game simulation.
 //Created by James Vanderhyde, 30 September 2024
-//Modified by Jackson McFarland 10/30/24
+//Modified by Jackson McFarland 10/1/24
 package dumbuno;
 
 import java.util.Random;
