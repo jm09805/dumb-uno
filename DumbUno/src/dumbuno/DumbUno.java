@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class DumbUno
 {
-    private static final Random rng = new Random();
+     private static final Random rng = new Random();
     
     public static void main(String[] args) 
     {
@@ -34,22 +34,35 @@ public class DumbUno
             current.setData(rng.nextInt(minHandSize, maxHandSize+1));
             current = current.getNext();
         }
+        current.setData(rng.nextInt(minHandSize, maxHandSize+1)); // Set for last player
         
         printGame(startPlayer);
         
-        //Play the game
+        // Play the game
         current = startPlayer;
-        while (current.getData() > 1)
+        while (true) 
         {
-            //Student implementation
+            int cards = current.getData();
+            if (cards > 1) {
+                current.setData(cards - 1);
+                if (current.getData() == 1) {
+                    System.out.println("Player with 1 card: Uno!");
+                }
+            } 
+            else if (cards == 1) {
+                System.out.println("I win!");
+                break;
+            }
+            current = current.getNext();
         }
-        System.out.println("I win!");
-        
     }
     
     private static void printGame(IntNode startPlayer)
     {
-        //Student implementation
+        IntNode current = startPlayer;
+        do {
+            System.out.println("Player has " + current.getData() + " cards.");
+            current = current.getNext();
+        } while (current != startPlayer);
     }
-    
 }
